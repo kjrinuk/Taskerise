@@ -5,4 +5,6 @@ from .models import Task
 
 # Create your views here.
 class TaskList(generic.ListView):
-    model = Task
+    queryset = Task.objects.filter()
+    template_name = "tasks/tasklist.html"
+    # model = Task

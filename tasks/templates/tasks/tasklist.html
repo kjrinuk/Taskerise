@@ -9,12 +9,13 @@
 </head>
 
 <body>
-    <h1>Tasks list</h1>
-    <!-- {% for tasks in object_list %}
-    <h2>{{Task.title}}</h2>
-    <p>{{task.description}}</p>
-    <p>User: {{task.user}}</p>
-    {% endfor %} -->
+    {% for tasks in object_list %}
+    <h1>Tasks list for {{tasks.user}}</h1>
+    
+    <h2>{{tasks.title}}</h2>
+    <p>{{tasks.description}}</p>
+    <p>User: {{tasks.user}}</p>
+    {% endfor %}
 </body>
 
 </html>
