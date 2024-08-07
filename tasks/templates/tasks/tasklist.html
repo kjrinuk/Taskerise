@@ -10,11 +10,11 @@
 
 <body>
     {% for tasks in object_list %}
-    <h1>Tasks list for {{tasks.user}}</h1>
+    <h1>{{tasks.user}}</h1>
     
     <h2>{{tasks.title}}</h2>
     <p>{{tasks.description}}</p>
-    <p>User: {{tasks.user}}</p>
+    <p>Priority: {{tasks.priority}}</p>
     {% endfor %}
 </body>
 

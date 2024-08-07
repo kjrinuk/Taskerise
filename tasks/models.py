@@ -1,14 +1,18 @@
 from django.db import models
 from django.contrib.auth.models import User
+# import validators for due_date
+from django.core.validators import MinValueValidator, MaxValueValidator
+
+import datetime
 
 # Create your models here.
 class Task(models.Model):
     # set values for Priorities
     class Priority(models.IntegerChoices):
-        LOW = 1, 'Low'
-        MEDIUM = 2, 'Medium'
-        HIGH = 3, 'High'
-        URGENT = 4, 'Urgent'
+        LOW = 4, 'Low'
+        MEDIUM = 3, 'Medium'
+        HIGH = 2, 'High'
+        URGENT = 1, 'Urgent'
     
     # set values for the Status
     class Status(models.IntegerChoices):
@@ -21,7 +25,13 @@ class Task(models.Model):
     task_id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=150)
-    due_date = models.DateField()
+    due_date = models.DateTimeField(
+        default=datetime.date.today,
+        validators=[
+            MinValueValidator(datetime.date.today()),
+            MaxValueValidator(datetime.date.today() + datetime.timedelta(days=365))
+        ]
+        )
     # Add due_time to next development phase
     #due_time = models.TimeField()
     date_created = models.DateTimeField(auto_now_add=True)
