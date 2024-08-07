@@ -40,3 +40,10 @@ class Task(models.Model):
     # category = models.ForeignKey(Category, on_delete=models.CASCADE)  #
     # project = models.ForeignKey(Project, on_delete=models.CASCADE)    #
     #####################################################################
+
+    class Meta:
+        ordering = ["-date_created"]
+
+    def __str__(self):
+        format_date = self.date_created
+        return f"{self.title}, created: {format_date} | {self.user}"
