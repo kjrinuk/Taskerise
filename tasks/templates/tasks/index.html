@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- index.html content starts here -->
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- Display Tasks -->
+        <div class="col-md-4">
+            <div class="row">
+                {% for task in task_list %}
+                <div class="col-md-4">
+                    <p class="priority">Priority: {{ task.priority }}</p>
+                </div>
+                <a href="#" class="task-link">
+                    <h2 class="task-title">{{ task.title }}</h2>
+                </a>
+                <p class="due-date h6">{{ task.due_date }}</p>
+            </div>
+            <div class="row">
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<!-- index.html content ends here -->
+{% endblock %}

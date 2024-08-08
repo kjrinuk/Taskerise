@@ -6,5 +6,6 @@ from .models import Task
 # Create your views here.
 class TaskList(generic.ListView):
     queryset = Task.objects.filter()
-    template_name = "tasks/tasklist.html"
-    # model = Task
+    template_name = "tasks/index.html"
+    paginate_by = 6
+    

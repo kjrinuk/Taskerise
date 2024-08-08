@@ -9,6 +9,5 @@ class TaskAdmin(SummernoteModelAdmin):
 
     list_display = ('title', 'due_date', 'priority', 'status')
     search_fields = ['title']
-    list_filter = ('priority',)
-    #prepopulated_fields = {'due_date': ('title',)}
+    list_filter = ('priority', 'status', 'due_date')
     summernote_fields = ('description',)
