@@ -7,5 +7,5 @@ from .models import Task
 class TaskList(generic.ListView):
     queryset = Task.objects.filter()
     template_name = "tasks/index.html"
-    paginate_by = 6
+    # paginate_by = 12
     
