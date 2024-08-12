@@ -4,11 +4,11 @@ from .models import Task
 
 class TaskAddForm(forms.ModelForm):
     
-    task_name = forms.CharField(widget = forms.TextInput(attrs={'placeholder': 'Task Name'}))
+    title = forms.CharField(widget = forms.TextInput(attrs={'placeholder': 'Task Name'}))
     
     class Meta:
         model = Task
-        fields = "__all__"
+        fields = ['title', 'user']
 
 class TaskForm(forms.ModelForm):
     

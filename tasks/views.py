@@ -12,12 +12,17 @@ from .forms import TaskForm, TaskAddForm
   
 
 def index(request): 
-
-    form = TaskAddForm()
     tasks = Task.objects.all()
- 
+    if request.method == 'POST':
+        form = TaskAddForm(request.POST)
+        if form.is_valid():
+            form.save()
+            print("form is valid")
+            return redirect('/')
+    else:
+        form = TaskAddForm()
+    
     context = {'tasks': tasks, 'TaskAddForm': form}
-
     return render(request, "tasks/tasks.html", context)
 
 # def addtask(request)

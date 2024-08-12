@@ -1,23 +1,46 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
 
 <h1>Today is the day!</h1>
-
-<form action="/" method="POST">
+<div class="container">
+<!-- <form method="POST" action="/">
     {% csrf_token %}
-    {{ TaskAddForm.task_name }}
+    {{ TaskAddForm.title }}
 
     <input type="submit" class="btn-blue" value="Add Task">
-    
-</form>
-
+   
+</form> -->
+<!-- 
 {% for task in tasks %}
 <a href="{% url 'edittask' task.task_id %}" class="task-link">
     <h5> {{ task.title }} </h5>
 </a>
+
+<p class="task_id:">Task ID: {{ task.task_id }}</p>
 <p class="priority">Priority: {{ task.priority }}</p>
 <p class="status">Status: {{ task.status }}</p>
-{% endfor %}
+{% endfor %} -->
 
+<h1>------------------------------------------</h1>
+        <ul class="list-group mb-3">
+            {% for task in tasks %}
+            <li>
+                <a href="{% url 'edittask' task.task_id %}" class="task-link">
+                    <h5> {{ task.title }} </h5>
+                </a>
+            </li>
+            <li class="list-group-item">
+                {{ task.title }} - {{ task.task_id }}
+            </li>
+            {% endfor %}
+        </ul>
+        
+        <form method="post">
+            {% csrf_token %}
+            {{ TaskAddForm.as_p }}
+            <button type="submit" class="btn btn-primary">Add Task</button>
+        </form>
+
+</div>
 {% endblock %}
