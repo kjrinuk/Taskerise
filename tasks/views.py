@@ -10,7 +10,7 @@ from .forms import TaskForm, TaskAddForm
 #     queryset = Task.objects.filter()
 #     template_name = "tasks/index.html"
   
-
+# Function to Add a task
 def index(request): 
     tasks = Task.objects.all()
     if request.method == 'POST':
@@ -25,12 +25,20 @@ def index(request):
     context = {'tasks': tasks, 'TaskAddForm': form}
     return render(request, "tasks/tasks.html", context)
 
-# def addtask(request)
+# Function to delete a chosen task
+def deleteTask(request, task_id):
+    task = Task.objects.get(task_id = task_id)
 
-#     task = get_object_or_404(Task)
+    if request.method == 'POST':
+            task.delete()
 
-#     return render(request, 'tasks/add_task.html')
+            return redirect('/')
 
+    context = {'task': task}
+
+    return render(request, 'tasks/deletetask.html', context)
+
+# Function to edit a chose task
 def edittask(request, task_id):
     # Call form
     #taskform = TaskForm()

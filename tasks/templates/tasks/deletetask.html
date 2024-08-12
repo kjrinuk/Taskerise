@@ -1,0 +1,9 @@
+<H3>Delete Your Task?</H3>
+<!-- Confirm the user wants to delete the task -->
+<p>Are you sure you want to delete <strong> {{ task.title }}</strong>?</p>
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Delete">
+</form>
+<a href="{% url 'index' %}" class="btn btn-secondary mt-3">Cancel</a>
