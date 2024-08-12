@@ -5,16 +5,31 @@
 <!-- index.html content starts here -->
 <div class="container-fluid">
     <div class="row">
+        <h2>Today</h2>
 
+        <form action="/" method="POST">
+            {% csrf_token %}
+            {{TaskForm.title}}
+
+            <input type="submit" class="btn" name="Add Task">What text goes here?
+
+        </form>
+
+        {% for task in tasks %}
+        <p>{{task}}</p>
+        {% endfor %}
         <!-- Display Tasks -->
         <div class="col-md-4">
             <div class="row">
+                <input class = "task h3" type="text" placeholder="Task to do"> 
+                <button type="submit">Add Task</button>
                 {% for task in task_list %}
                 <div class="col-md-4">
+                    <p class="taskid">Task ID: {{ task.task_id }}</p>
                     <p class="priority">Priority: {{ task.priority }}</p>
-                </div> 
-                <a href="{% url 'edittask' %}" class="task-link">
-                    <h2 class="task-title">{{ task.completed }}  {{ task.title }}</h2>
+                </div>
+                <a href="{% url 'edittask' task.task_id %}" class="task-link">
+                    <h2> {{ task.title }} </h2>
                 </a>
                 <p class="due-date h6">{{ task.due_date }}</p>
             </div>
@@ -24,7 +39,7 @@
             </div>
         </div>
     </div>
-    
+
 </div>
 
 <!-- index.html content ends here -->

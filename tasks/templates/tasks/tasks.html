@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Today is the day!</h1>
+
+<form action="/" method="POST">
+    {% csrf_token %}   
+    {{ TaskForm.title }}
+
+    <input type="text" class="btn btn-info" name="Add Task">
+    <label>What's for breakfast</label>
+</form>
+
+{% endblock %}
