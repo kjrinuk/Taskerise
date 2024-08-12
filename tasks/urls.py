@@ -7,6 +7,5 @@ urlpatterns = [
     path('', views.TaskList.as_view(), name='home'),
     path('', index, name = 'index'),
     # path('', include(tasks.urls)),
-    
     path('edittask/<int:task_id>/', views.edittask, name='edittask'),
 ]

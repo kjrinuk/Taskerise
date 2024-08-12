@@ -8,4 +8,6 @@ class TaskForm(forms.ModelForm):
     
     class Meta:
         model = Task
-        fields = "__all__"
+        fields = ['title', 'description', 'priority', 'status', 'completed']
+        labels = ""
+        # fields = "__all__"

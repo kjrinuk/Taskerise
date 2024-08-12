@@ -6,32 +6,21 @@
 <div class="container-fluid">
     <div class="row">
         <h2>Today</h2>
-
-        <form action="/" method="POST">
-            {% csrf_token %}
-            {{TaskForm.title}}
-
-            <input type="submit" class="btn" name="Add Task">What text goes here?
-
-        </form>
-
-        {% for task in tasks %}
-        <p>{{task}}</p>
-        {% endfor %}
+      
         <!-- Display Tasks -->
         <div class="col-md-4">
             <div class="row">
-                <input class = "task h3" type="text" placeholder="Task to do"> 
-                <button type="submit">Add Task</button>
+                <input class = "task-name h5" type="text" placeholder="Task name"> 
+                <button class="" type="submit">Add Task</button>
+                <p></p>
                 {% for task in task_list %}
-                <div class="col-md-4">
-                    <p class="taskid">Task ID: {{ task.task_id }}</p>
-                    <p class="priority">Priority: {{ task.priority }}</p>
-                </div>
+     
                 <a href="{% url 'edittask' task.task_id %}" class="task-link">
-                    <h2> {{ task.title }} </h2>
+                    <h5> {{ task.title }} </h5>
                 </a>
-                <p class="due-date h6">{{ task.due_date }}</p>
+                <p class="priority">Priority: {{ task.priority }}</p>
+                <p class="status">Status: {{ task.status }}</p>
+                <!-- <p class="due-date h6">{{ task.due_date }}</p> -->
             </div>
             <div class="row">
                 {% endfor %}
