@@ -5,11 +5,19 @@
 <h1>Today is the day!</h1>
 
 <form action="/" method="POST">
-    {% csrf_token %}   
-    {{ TaskForm.title }}
+    {% csrf_token %}
+    {{ TaskAddForm.task_name }}
 
-    <input type="text" class="btn btn-info" name="Add Task">
-    <label>What's for breakfast</label>
+    <input type="submit" class="btn-blue" value="Add Task">
+    
 </form>
+
+{% for task in tasks %}
+<a href="{% url 'edittask' task.task_id %}" class="task-link">
+    <h5> {{ task.title }} </h5>
+</a>
+<p class="priority">Priority: {{ task.priority }}</p>
+<p class="status">Status: {{ task.status }}</p>
+{% endfor %}
 
 {% endblock %}

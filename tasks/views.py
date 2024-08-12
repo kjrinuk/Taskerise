@@ -2,23 +2,29 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 
 from .models import Task
-from .forms import TaskForm
+from .forms import TaskForm, TaskAddForm
 
 
 # Create your views here.
-class TaskList(generic.ListView):
-    queryset = Task.objects.filter()
-    template_name = "tasks/index.html"
-    # paginate_by = 12
+# class TaskList(generic.ListView):
+#     queryset = Task.objects.filter()
+#     template_name = "tasks/index.html"
+  
 
 def index(request): 
 
-    form = TaskForm()
+    form = TaskAddForm()
     tasks = Task.objects.all()
  
-    context = {'tasks': tasks, 'TaskForm': form}
+    context = {'tasks': tasks, 'TaskAddForm': form}
 
     return render(request, "tasks/tasks.html", context)
+
+# def addtask(request)
+
+#     task = get_object_or_404(Task)
+
+#     return render(request, 'tasks/add_task.html')
 
 def edittask(request, task_id):
     # Call form
