@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-
-<h3>      Seize your day!</h3>
+{% if user.is_authenticated %}
+<h3> Seize your day!</h3>
 <div class="container">
     <h1>......</h1>
     <form method="post">
-            {% csrf_token %}
-            {{ TaskAddForm.as_p }}
-            <button type="submit" class="btn btn-success">Add Task</button>
+        {% csrf_token %}
+        {{ TaskAddForm.as_p }}
+        <button type="submit" class="btn btn-success">Add Task</button>
     </form>
     <h1>......</h1>
     <ul class="list-group">
@@ -23,8 +23,6 @@
         </li>
         {% endfor %}
     </ul>
-
-
-
 </div>
+{% endif %}
 {% endblock %}
