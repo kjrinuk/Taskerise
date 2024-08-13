@@ -7,5 +7,6 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
     # Home page path
     path('', include('tasks.urls')),
+    path("accounts/", include("allauth.urls")),
  
 ] + debug_toolbar_urls()
