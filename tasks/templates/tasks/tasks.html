@@ -12,7 +12,11 @@
     </form>
     <h1>......</h1>
     <ul class="list-group">
+        task_user = {{ task.user }}
+        username = {{ user.username }} 
+
         {% for task in tasks %}
+        
         <li class="list-group-item">
             <a href="{% url 'edittask' task.task_id %}" class="task-link">
                 <h5> {{ task.title }} </h5>
@@ -21,6 +25,7 @@
                 </a>
             </a>
         </li>
+        
         {% endfor %}
     </ul>
 </div>

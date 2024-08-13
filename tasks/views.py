@@ -12,7 +12,13 @@ from .forms import TaskForm, TaskAddForm
   
 # Function to Add a task
 def index(request): 
-    tasks = Task.objects.all()
+    # Only show tasks for logged in user
+    if request.user.is_authenticated:
+        tasks = Task.objects.filter(user=request.user)
+    else:
+        tasks=Task.objects.none()
+
+    
     if request.method == 'POST':
         form = TaskAddForm(request.POST)
         if form.is_valid():
