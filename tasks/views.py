@@ -5,11 +5,6 @@ from .models import Task
 from .forms import TaskForm, TaskAddForm
 
 
-# Create your views here.
-# class TaskList(generic.ListView):
-#     queryset = Task.objects.filter()
-#     template_name = "tasks/index.html"
-  
 # Function to Add a task
 def index(request): 
     # Only show tasks for logged in user
@@ -22,8 +17,13 @@ def index(request):
     if request.method == 'POST':
         form = TaskAddForm(request.POST)
         if form.is_valid():
-            form.save()
-            print("form is valid")
+            # Assign the current logged in user to the task
+            task=form.save(commit = False)
+            task.user = request.user
+            
+
+            task.save()
+
             return redirect('/')
     else:
         form = TaskAddForm()
