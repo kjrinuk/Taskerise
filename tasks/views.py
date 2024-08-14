@@ -1,11 +1,12 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
-
+from django.contrib.auth.decorators import login_required
 from .models import Task
 from .forms import TaskForm, TaskAddForm
 
 
 # Function to Add a task
+@login_required
 def index(request): 
     # Only show tasks for logged in user
     if request.user.is_authenticated:
