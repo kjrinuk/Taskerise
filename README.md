@@ -2,7 +2,7 @@
 
 Welcome to TASKerise ...
 
-This is ....
+Don't just prioritise, TASKerise:  https://taskerise-1ff1367ffa28.herokuapp.com/ 
 
 
 **August 15, 2024**
