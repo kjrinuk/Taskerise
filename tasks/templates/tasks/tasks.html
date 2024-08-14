@@ -2,15 +2,23 @@
 {% load static %}
 {% block content %}
 {% if user.is_authenticated %}
-<h3> Seize your day!</h3>
+<section class="bg-light">
+    <div class="container">
+        <div class="text-center">
+            <h2>"A year from now you may wish you had started today."</h2>
+            <p class="lead"> — Karen Lamb</p>
+        </div>
+    </div>
+</section>
+
 <div class="container">
-    <h1>......</h1>
+    <h3> Seize your day!</h3>
     <form method="post">
         {% csrf_token %}
-        {{ TaskAddForm.as_p }}
+        {{ TaskAddForm.title }}
         <button type="submit" class="btn btn-success">Add Task</button>
     </form>
-    <h1>......</h1>
+    
     <ul class="list-group">
         {% for task in tasks %}
         

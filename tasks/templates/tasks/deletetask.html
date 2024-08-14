@@ -5,5 +5,7 @@
 <form method="POST">
     {% csrf_token %}
     <input type="submit" value="Delete">
+    
+    <a href="{% url 'index' %}" class="btn btn-secondary mt-3">Cancel</a>
 </form>
-<a href="{% url 'index' %}" class="btn btn-secondary mt-3">Cancel</a>
+
