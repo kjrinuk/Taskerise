@@ -16,9 +16,6 @@ import dj_database_url
 if os.path.isfile('env.py'):
     import env
 
-
-
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
@@ -31,7 +28,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # 'django-insecure-ofcq6kojmu%92-%h6$j%nzkd1ve@=6m$_n#e%ew^l4)m5gg8&6'
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# SECURITY WARNING: don't run with debug set to TRUE for production!
 DEBUG = False
 
 ALLOWED_HOSTS = ['8000-kjrinuk-taskerise-3x4zkfrz5qh.ws.codeinstitute-ide.net',
