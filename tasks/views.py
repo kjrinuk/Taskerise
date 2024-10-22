@@ -3,7 +3,7 @@ from django.views import generic
 from django.contrib.auth.decorators import login_required
 from .models import Task
 from .forms import TaskForm, TaskAddForm
-
+from django.core.exceptions import PermissionDenied
 
 # Function to Add a task
 @login_required
@@ -33,10 +33,13 @@ def index(request):
     return render(request, "tasks/tasks.html", context)
 
 # Function to delete a chosen task
-@login_required
 def deleteTask(request, task_id):
     task = Task.objects.get(task_id = task_id)
-
+    
+    # Check for the correct user before allowing edit
+    if task.user != request.user:
+        raise PermissionDenied
+    
     if request.method == 'POST':
             task.delete()
 
@@ -47,12 +50,14 @@ def deleteTask(request, task_id):
     return render(request, 'tasks/deletetask.html', context)
 
 # Function to edit a chosen task
-@login_required
 def edittask(request, task_id):
     # Call form
     #taskform = TaskForm()
     task = get_object_or_404(Task, task_id=task_id)
-
+    # Check for the correct user before allowing edit
+    if task.user != request.user:
+        raise PermissionDenied
+    
     if request.method == 'POST':
         form = TaskForm(request.POST, instance=task)
         if form.is_valid():
