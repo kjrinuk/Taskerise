@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+import sys
+
 if os.path.isfile('env.py'):
     import env
 
@@ -24,9 +26,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = os.environ.get("SECRET_KEY")
-
-SECRET_KEY = 'django-insecure-ofcq6kojmu%92-%h6$j%nzkd1ve@=6m$_n#e%ew^l4)m5gg8&6'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug set to TRUE for production!
 DEBUG = True
@@ -35,9 +35,7 @@ ALLOWED_HOSTS = ['8000-kjrinuk-taskerise-29dq3rhrsw8.ws.codeinstitute-ide.net',
                 '.herokuapp.com'
 ]
 
-
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -97,6 +95,10 @@ WSGI_APPLICATION = 'taskerise.wsgi.application'
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
+
+# Create database when in test mode
+if 'test' in sys.argv:
+    DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
 
 #  To allow admin to add tasks for testing purposes
 CSRF_TRUSTED_ORIGINS = [
