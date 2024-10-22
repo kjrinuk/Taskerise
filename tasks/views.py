@@ -33,6 +33,7 @@ def index(request):
     return render(request, "tasks/tasks.html", context)
 
 # Function to delete a chosen task
+@login_required
 def deleteTask(request, task_id):
     task = Task.objects.get(task_id = task_id)
 
@@ -45,7 +46,8 @@ def deleteTask(request, task_id):
 
     return render(request, 'tasks/deletetask.html', context)
 
-# Function to edit a chose task
+# Function to edit a chosen task
+@login_required
 def edittask(request, task_id):
     # Call form
     #taskform = TaskForm()

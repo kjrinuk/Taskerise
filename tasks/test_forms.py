@@ -23,15 +23,7 @@ class TestTaskForm(TestCase):
         # Add some valid sample data 
         task_form = TaskForm({'task_id': 2, 'title': '', 'description': 'Descriptifon for Task', 'due_date': datetime.date.today(), 'priority': Task.Priority.MEDIUM, 'status': Task.Status.IN_PROGRESS, 'completed': False})
         
-        # Invalidation
+        # Check that not valid
         self.assertFalse(task_form.is_valid(), msg='Title should be missing')
         print(task_form.errors)
         
-        
-        
-        # Confirm the task was saved accurately
-        # And to the user
-        #self.assertEqual(Task.objects.count(), 1)
-        #self.assertEqual(Task.objects.first().title, 'Task Title')
-        #self.assertEqual(Task.objects.first().user, self.user)
-         
