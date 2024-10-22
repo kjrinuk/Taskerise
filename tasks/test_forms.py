@@ -1,11 +1,6 @@
-# ErrorClass error
-from django.forms.utils import ErrorList
-
 from django.test import TestCase
 from django.contrib.auth.models import User
 from .forms import TaskForm
-# I don't think the following import is required because it should be 
-# found in the previous import
 from .models import Task
 import datetime
 
@@ -24,4 +19,19 @@ class TestTaskForm(TestCase):
         # Validation
         self.assertTrue(task_form.is_valid())
         
+    def test_taskform_not_valid(self):
+        # Add some valid sample data 
+        task_form = TaskForm({'task_id': 2, 'title': '', 'description': 'Descriptifon for Task', 'due_date': datetime.date.today(), 'priority': Task.Priority.MEDIUM, 'status': Task.Status.IN_PROGRESS, 'completed': False})
         
+        # Invalidation
+        self.assertFalse(task_form.is_valid(), msg='Title should be missing')
+        print(task_form.errors)
+        
+        
+        
+        # Confirm the task was saved accurately
+        # And to the user
+        #self.assertEqual(Task.objects.count(), 1)
+        #self.assertEqual(Task.objects.first().title, 'Task Title')
+        #self.assertEqual(Task.objects.first().user, self.user)
+         
