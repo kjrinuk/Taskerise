@@ -40,6 +40,8 @@ Taskerise will enable a user who has logged in to keep a catalogue of their curr
 The following Kaban board created in GitHub shows that after issues (user stories) were created they were added to the board in the To Do section.  From there they were moved to the In Progress so that work could begin implementing the code for that feature or issue.  Once completed the task was added to the Done area.  However it became apparent that some of the features could not be implemented for this update and so they have been added to the [Future Features](#future-features) section 
 ![image](https://github.com/user-attachments/assets/b4452532-3161-4dd4-b60d-5075f9c173d3)
 
+User stories were created like this example below:  Further User Stories can be found in detail under the Issues Heading
+![image](https://github.com/user-attachments/assets/5da92563-ac4f-4cd4-a5e3-c3088c5adbc4)
 
 Labels were created to assign Low, Medium and High Priorities so that High priority tasks were given the preference
 ![image](https://github.com/user-attachments/assets/259c3e59-4400-4ca3-a34b-13d703d05bb0)
