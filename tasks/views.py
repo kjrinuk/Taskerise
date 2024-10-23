@@ -1,9 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import PermissionDenied
 from .models import Task
 from .forms import TaskForm, TaskAddForm
-from django.core.exceptions import PermissionDenied
 
 # Function to Add a task
 @login_required
