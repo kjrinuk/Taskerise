@@ -31,6 +31,12 @@ To enable the full stack website to make use of PostGreSQL for users to create a
 - Followed by connecting and deploying to a URL link
 ![image](https://github.com/user-attachments/assets/d1c51315-d004-415c-a6df-d98a7e18132e)
 
+## Future Features
+As highlighted in the KABAN board I would like to add additional functionality such as adding a pomodoro timer, short cut keys, alternate motivational quotes and create subtasks
+
+![image](https://github.com/user-attachments/assets/7b39b9dd-278e-4ba1-8fe2-76b7eb6cd0ea)
+
+Also along with ensuring the program has uniform functionality and design it requires better CRUD functionality.  One example is on the edit task page.  A user who clicks to go back to the Task List page will lose any changes made.  Rather they should be asked if they would like to save or discard the changes.
 
 ## Testing
 ### Automated tests
@@ -53,7 +59,6 @@ This made it easy to clean up the code as shown here:
 
 ![image](https://github.com/user-attachments/assets/05f50490-ea41-498b-962a-fd172e9cf9e1)
 
-**  **
 
 ## Technologies
 The following technologies were employed in the creation of TASKerise:
